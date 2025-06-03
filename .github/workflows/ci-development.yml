@@ -1,23 +1,23 @@
-name: Python Publish Pipeline
+name: Development CI
 
 on:
   push:
     branches:
-      - main
+      - develop
   pull_request:
     branches:
-      - main
+      - develop
 
 jobs:
   build-and-test:
-    name: Set up Python and Test
+    environment: Development
     runs-on: ubuntu-latest
 
     steps:
       - name: Check out code
         uses: actions/checkout@v3
 
-      - name: Set up Python 3.x
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.x'
@@ -27,7 +27,6 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-      - name: Run tests or validation
+      - name: Run unit tests
         run: |
-          # Replace this with any command you need, e.g. pytest or a lint step
-          echo "No tests defined yet"
+          pytest
