@@ -3,10 +3,10 @@ name: Development CI
 on:
   push:
     branches:
-      - develop
+      - development
   pull_request:
     branches:
-      - develop
+      - development
 
 jobs:
   build-and-test:
@@ -20,7 +20,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.x'
+          python-version: "3.x"
 
       - name: Install dependencies
         run: |
